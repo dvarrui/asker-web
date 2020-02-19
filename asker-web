@@ -1,0 +1,6 @@
+#!/usr/bin/ruby
+require_relative 'lib/asker/web/command'
+
+Asker::Web::Command.show_help if ARGV[0] == 'help'
+Asker::Web::Command.show_version if ARGV[0] == 'version'
+Asker::Web::Command.up
