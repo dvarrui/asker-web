@@ -19,7 +19,7 @@ module AskerWeb
   end
 
   def self.show_version
-    puts "#{Application::NAME} (version #{Application::VERSION})"
+    puts "#{WebApplication::NAME} (version #{WebApplication::VERSION})"
     exit 0
   end
 end

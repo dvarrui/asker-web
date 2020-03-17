@@ -1,10 +1,14 @@
 
+require_relative 'asker/loader/file_loader'
+
 module Sinatra
   module WebPanel
     module RouteConcept
 
       def self.registered(app)
         app.get '/concept/list/*.*' do |path,ext|
+          puts path
+          puts ext
           @filename = path+"."+ext
           filepath = File.join(Dir.pwd, @filename)
           data = FileLoader.load(filepath)

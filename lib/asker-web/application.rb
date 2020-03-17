@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Application
+module WebApplication
   VERSION = '0.0.0'
   NAME = 'asker-web'
 end
