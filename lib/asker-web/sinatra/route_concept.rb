@@ -1,5 +1,6 @@
 
 require_relative 'asker/loader/file_loader'
+require_relative 'formatter/concept_haml_formatter'
 
 module Sinatra
   module WebPanel
@@ -27,7 +28,7 @@ module Sinatra
           @concepts = session['concepts']
           @concept = @concepts[ @index.to_i ]
 
-          puts "ConceptHAMLFormatter.new(@concept).to_s"
+          ConceptHAMLFormatter.new(@concept).to_s
 
           @filename = @concept.filename
           @current  = File.dirname( File.join(Dir.pwd, @filename) )
