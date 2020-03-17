@@ -2,7 +2,7 @@
 require 'sinatra/base'
 require 'coderay'
 
-require_relative '../project'
+require_relative '../../asker/project'
 require_relative 'helpers'
 require_relative 'route_concept'
 require_relative 'route_dir'
