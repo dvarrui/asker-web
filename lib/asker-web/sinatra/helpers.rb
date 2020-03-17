@@ -1,10 +1,10 @@
 
 # Sintatra.SinatraFrontEnd.Helpers
 module Sinatra
-  module SinatraFrontEnd
+  module WebPanel
     module Helpers
 
-      BASEDIR = Project.instance.inputbasedir
+      BASEDIR = Dir.pwd
 
       def route_for(path)
         s = BASEDIR.size + 1

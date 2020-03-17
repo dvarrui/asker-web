@@ -1,12 +1,12 @@
 
 module Sinatra
-  module SinatraFrontEnd
+  module WebPanel
     module RouteConcept
 
       def self.registered(app)
         app.get '/concept/list/*.*' do |path,ext|
           @filename = path+"."+ext
-          filepath = File.join(Project.instance.inputbasedir, @filename)
+          filepath = File.join(Dir.pwd, @filename)
           data = FileLoader.load(filepath)
           @concepts = data[:concepts]
           @lang = @concepts[0].lang
@@ -23,10 +23,10 @@ module Sinatra
           @concepts = session['concepts']
           @concept = @concepts[ @index.to_i ]
 
-          puts ConceptHAMLFormatter.new(@concept).to_s
+          puts "ConceptHAMLFormatter.new(@concept).to_s"
 
           @filename = @concept.filename
-          @current  = File.dirname( File.join( Project.instance.inputbasedir, @filename) )
+          @current  = File.dirname( File.join(Dir.pwd, @filename) )
           erb :"concept/show"
         end
       end

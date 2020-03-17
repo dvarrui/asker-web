@@ -1,14 +1,14 @@
 
-require_relative '../builder/builder'
+# require_relative '../builder/builder'
 
 module Sinatra
-  module SinatraFrontEnd
+  module WebPanel
     module RouteFile
 
       def self.registered(app)
         app.get '/file/show/*.*' do |path,ext|
           @filename = path+"."+ext
-          filepath = File.join( Project.instance.inputbasedir, @filename)
+          filepath = File.join(Dir.pwd, @filename)
           content = load_file filepath
 #          @filecontent = CodeRay.scan(content, ext.to_sym).div(:line_numbers => :table)
           @filecontent = "<pre>#{content}</pre>"
@@ -18,7 +18,7 @@ module Sinatra
         end
 
         app.get '/file/delete/*' do
-          filepath = File.join( Project.instance.inputbasedir, params[:splat] )
+          filepath = File.join(Dir.pwd, params[:splat] )
           dirpath = File.dirname(filepath)
           FileUtils.rm(filepath)
           redirect "/dir/list/#{route_for(dirpath)}"
@@ -35,7 +35,7 @@ module Sinatra
 
         app.get '/file/create/*' do |name|
           filename = name+".haml"
-          @current=File.join( Project.instance.inputbasedir, filename )
+          @current=File.join(Dir.pwd, filename )
           Builder::create_hamlfile(@current)
           redirect "/concept/list/#{route_for(@current)}"
         end

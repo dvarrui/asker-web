@@ -1,18 +1,25 @@
 #!/usr/bin/ruby
 
-require_relative 'asker-web/sinatra/sinatra_front_end'
-require_relative 'application'
+require_relative 'asker-web/application'
+require_relative 'asker-web/sinatra/web_panel'
 
 module AskerWeb
   def self.show_help
-    puts "Usage:"
+    puts "asker-web"
+    puts "Commands:"
+    puts "  asker-web up       # Up asker web panel"
+    puts "  asker-web help     # Show this help"
+    puts "  asker-web version  # Show version"
+    exit 0
   end
 
   def self.up
-    #SinatraFrontEnd.run!
+    WebPanel.run!
+    exit 0
   end
 
   def self.show_version
     puts "#{Application::NAME} (version #{Application::VERSION})"
+    exit 0
   end
 end
